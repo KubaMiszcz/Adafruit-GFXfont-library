@@ -21,6 +21,7 @@ def isFont(font):
 
 
 # // create directories and copy font into them
+file1 = open("addedFonts.txt", "w")
 for font in fontList:
     if isFont(font):
         dirName = font
@@ -35,19 +36,29 @@ for font in fontList:
         dst_dir = dirPath + '\\' + font
         shutil.copy(src_dir, dst_dir)
 
+dirList = os.listdir(cwd+rf'\GFX_Fonts')
+for dirName in dirList:
+    fontList = os.listdir(cwd+rf'\GFX_Fonts'+ rf'\\' + dirName)
+        
+    for font in fontList:
+        if isFont(font):
+            # convert fonts
+            dirPath = cwd + rf'\GFX_Fonts' + '\\' + dirName
+            srcFont = font
+            gfxFontName = Path(srcFont).stem
 
-        # convert fonts
-        srcFont = font
-        gfxFontName = Path(srcFont).stem
+            gfxFontName = gfxFontName.replace('.', '-')
+            gfxFontName = gfxFontName.replace(' ', '_')
+            for size in fontSizes:
+                # `fontconvert myCoolFont.ttf 9 > myCoolFont9pt7b.h`
+                pathToBinary = rf'{cwd}/GFX_Font_Converter-binary/fontconvert.exe'
+                srcFile = f'"{dirPath}/{font}"'
+                outputfile = rf'{dirPath}/{gfxFontName}_{size}pt7b.h'
+                cmd = rf'{pathToBinary} {srcFile} {size} > {outputfile}'
+                os.system(cmd)
+                print(f'converted {font} into {gfxFontName}_{size}pt7b.h')
 
-        gfxFontName = gfxFontName.replace('.', '-')
-        gfxFontName = gfxFontName.replace(' ', '_')
-        for size in fontSizes:
-            # `fontconvert myCoolFont.ttf 9 > myCoolFont9pt7b.h`
-            pathToBinary = rf'{cwd}/GFX_Font_Converter-binary/fontconvert.exe'
-            srcFile = f'"{dirPath}/{font}"'
-            outputfile = rf'{dirPath}/{gfxFontName}_{size}pt7b.h'
-            cmd = rf'{pathToBinary} {srcFile} {size} > {outputfile}'
-            os.system(cmd)
-            print(f'converted {font} into {gfxFontName}_{size}pt7b.h')
+            # add to list
+            file1.write(f"- {font}\n")
 
+file1.close()
