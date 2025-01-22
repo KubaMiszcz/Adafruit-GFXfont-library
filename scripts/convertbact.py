@@ -63,9 +63,9 @@ for dirName in dirList:
                 cmd = rf'{pathToBinary} {srcFile} {size} > {outputfile}'
                 os.system(cmd)
 
-                line_prepender(outputfile,'#pragma once')
-                line_prepender(outputfile,'#include <Adafruit_GFX.h>')
                 line_prepender(outputfile,'')
+                line_prepender(outputfile,'#include <Adafruit_GFX.h>')
+                line_prepender(outputfile,'#pragma once')
 
                 print(f'converted {font} into {gfxFontName}{size}pt7b.h')
 
