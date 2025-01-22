@@ -21,7 +21,10 @@ then in your main.cpp or similar:
 - TFT7735S
 
 ## contents:
-Airborne 86.ttf
+- 8514fix.fon
+- 8514oem.fon
+- 8514sys.fon
+- Airborne 86.ttf
 - bahnschrift.ttf
 - C64_Pro-STYLE.ttf
 - calibri.ttf
@@ -46,12 +49,17 @@ Airborne 86.ttf
 - courbd.ttf
 - courbi.ttf
 - couri.ttf
+- courierstd-bold.otf
+- courierstd-boldoblique.otf
+- courierstd-oblique.otf
+- courierstd.otf
 - covertops.ttf
 - covertopscond.ttf
 - covertopscondital.ttf
 - covertopsexpand.ttf
 - covertopsexpandital.ttf
 - covertopsital.ttf
+- dosapp.fon
 - Inkfree.ttf
 - JetBrainsMono-Bold.ttf
 - JetBrainsMono-BoldItalic.ttf
@@ -128,6 +136,7 @@ Airborne 86.ttf
 - SESimplex.ttf
 - SEStencil.ttf
 - Siemens_GOST Type A.ttf
+- smalle.fon
 - swgothe.ttf
 - swgothg.ttf
 - swgothi.ttf
@@ -156,6 +165,7 @@ Airborne 86.ttf
 - verdanab.ttf
 - verdanai.ttf
 - verdanaz.ttf
+- vgaoem.fon
 - webdings.ttf
 - wingding.ttf
 
