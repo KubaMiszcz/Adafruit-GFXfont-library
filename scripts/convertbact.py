@@ -3,7 +3,7 @@ from os.path import isfile, join
 from pathlib import Path
 import shutil
 
-fontextensions = ['.ttf']  # , '.otf', '.fon']
+fontextensions = ['.ttf', '.otf', '.fon']
 fontSizes = [6, 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24]
 
 
