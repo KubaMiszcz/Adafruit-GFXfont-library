@@ -7,15 +7,17 @@ Font library in Adafruit GFXfont format:
 - run this in command line (9 means fontsize)
 `fontconvert myCoolFont.ttf 9 > myCoolFont9pt7b.h`
 - output is your .h file
-- you need to manually add (updated script is in another branch) those line at the beginning of each header file:
+- following line are needed to work and automatically added at the beginning of each header file:
   ```
     #pragma once
     #include <Adafruit_GFX.h>
   ```
 
-in Platformio put this header into directory eg: `/lib/myFonts/`
+in Platformio put this header into directory eg: `/lib/myFonts/myCoolFont/`
 then in your main.cpp or similar:
-`#include <myCoolFont9pt7b.h>`
+`#include <myCoolFont/myCoolFont9pt7b.h>`
+and use like:
+`tft.setFont(&myCoolFont9pt7b);`
 
 ## it fits with:
 - TFT7735S
