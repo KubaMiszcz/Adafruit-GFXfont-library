@@ -7,7 +7,7 @@ Font library in Adafruit GFXfont format:
 - run this in command line (9 means fontsize)
 `fontconvert myCoolFont.ttf 9 > myCoolFont9pt7b.h`
 - output is your .h file
-- you need to manually add those line at the beginning of each header file:
+- you need to manually add (updated script is in another branch) those line at the beginning of each header file:
   ```
     #pragma once
     #include <Adafruit_GFX.h>
