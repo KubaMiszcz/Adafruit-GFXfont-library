@@ -4,7 +4,7 @@ from pathlib import Path
 import shutil
 
 fontextensions = ['.ttf', '.otf', '.fon']
-fontSizes = [6, 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24]
+fontSizes = [6, 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28]
 
 
 fontList = os.listdir()
@@ -13,7 +13,7 @@ fontList = os.listdir(cwd+rf'\fontsToImport')
 
 
 def isFont(font):
-    ext = Path(font).suffix
+    ext = Path(font).suffix.lower()
     if ext in fontextensions:
         return True
 
@@ -25,6 +25,7 @@ def line_prepender(filename, line):
         f.seek(0, 0)
         f.write(line.rstrip('\r\n') + '\n' + content)
 
+print('start')
 
 # // create directories and copy font into them
 file1 = open("addedFonts.txt", "w")
@@ -56,10 +57,10 @@ for dirName in dirList:
             gfxFontName = gfxFontName.replace('.', '_')
             gfxFontName = gfxFontName.replace(' ', '_')
             for size in fontSizes:
-                # `fontconvert myCoolFont.ttf 9 > myCoolFont9pt7b.h`
+                # `fontconvert myCoolFont.ttf 9 > myCoolFont9pt.h`
                 pathToBinary = rf'{cwd}/GFX_Font_Converter-binary/fontconvert.exe'
                 srcFile = f'"{dirPath}/{font}"'
-                outputfile = rf'{dirPath}/{gfxFontName}{size}pt7b.h'
+                outputfile = rf'{dirPath}/{gfxFontName}{size}pt.h'
                 cmd = rf'{pathToBinary} {srcFile} {size} > {outputfile}'
                 os.system(cmd)
 
@@ -67,9 +68,10 @@ for dirName in dirList:
                 line_prepender(outputfile,'#include <Adafruit_GFX.h>')
                 line_prepender(outputfile,'#pragma once')
 
-                print(f'converted {font} into {gfxFontName}{size}pt7b.h')
+                print(f'converted {font} into {gfxFontName}{size}pt.h')
 
             # add to list
             file1.write(f"- {font}\n")
 
+print("finished")
 file1.close()
