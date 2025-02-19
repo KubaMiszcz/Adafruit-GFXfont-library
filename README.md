@@ -19,7 +19,7 @@ then in your main.cpp or similar:
 and use like:
 `tft.setFont(&myCoolFont9pt7b);`
 
-## it fits with:
+## tested with:
 - TFT7735S
 
 ## contents:
