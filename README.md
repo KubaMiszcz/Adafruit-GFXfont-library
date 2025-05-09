@@ -3,6 +3,7 @@ Font library in Adafruit GFXfont format:
 <Adafruit_GFX.h>
 
 ## Create your own font header files to work with Adafruit GFX lib. (You can read more details at: learn.adafruit.)
+### MANUAL WAY:
 - copy your font into directory `GFX_Font_Converter-binary`
 - run this in command line (9 means fontsize)
 `fontconvert myCoolFont.ttf 9 > myCoolFont9pt7b.h`
@@ -12,6 +13,18 @@ Font library in Adafruit GFXfont format:
     #pragma once
     #include <Adafruit_GFX.h>
   ```
+
+### Batch WAY:
+- copy your font into directory `fontsToImport`
+- run this in command: `scripts\convertbatch.py`
+- it add your fonts .h files in sizes to directory `GFX_Fonts`, if you need more sizes edit table in script `convertbatch.py`
+- following line are needed to work and automatically added at the beginning of each header file:
+  ```
+    #pragma once
+    #include <Adafruit_GFX.h>
+  ```
+- it copies your fontfile (.ttf etc) into `GFX_Fonts/fontname` 
+- now move fontfile from `fontsToImport` to `fonts_Imported` and update list in `README.MD`
 
 in Platformio put this header into directory eg: `/lib/myFonts/myCoolFont/`
 then in your main.cpp or similar:
@@ -132,6 +145,7 @@ and use like:
 - POORICH.TTF
 - PressStart2P.ttf
 - PRISTINA.TTF
+- Reactor7.ttf
 - Roboto-BlackItalic.ttf
 - Roboto-Black.ttf
 - Roboto-BoldItalic.ttf
